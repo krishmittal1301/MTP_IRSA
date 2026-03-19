@@ -1,4 +1,4 @@
-ns-3.36.1/
+ns-3.36.1/logs*
 build/
 cmake-cache/
 *.o
