@@ -1,0 +1,464 @@
+Final Average Delay (Dist2): 0.00213148
+Final Average Delay (Dist2): 0.00212644
+Final Average Delay (Dist2): 0.00212686
+Final Average Delay (Dist2): 0.00213389
+Final Average Delay (Dist2): 0.00210229
+Final Average Delay (Dist2): 0.00211378
+Final Average Delay (Dist2): 0.00212911
+Final Average Delay (Dist2): 0.00213335
+Final Average Delay (Dist2): 0.00213419
+Final Average Delay (Dist2): 0.00211299
+Final Average Delay (Dist2): 0.00213918
+Final Average Delay (Dist2): 0.00213148
+Final Average Delay (Dist2): 0.00212644
+Final Average Delay (Dist2): 0.00212686
+Final Average Delay (Dist2): 0.00213389
+Final Average Delay (Dist2): 0.00210229
+Final Average Delay (Dist2): 0.00211378
+Final Average Delay (Dist2): 0.00212911
+Final Average Delay (Dist2): 0.00213335
+Final Average Delay (Dist2): 0.00213419
+Final Average Delay (Dist2): 0.00211299
+Final Average Delay (Dist2): 0.00213918
+Final Average Delay (Dist2): 0.0026642
+Final Average Delay (Dist2): 0.00265413
+Final Average Delay (Dist2): 0.00264334
+Final Average Delay (Dist2): 0.00266998
+Final Average Delay (Dist2): 0.0026476
+Final Average Delay (Dist2): 0.0026619
+Final Average Delay (Dist2): 0.00264052
+Final Average Delay (Dist2): 0.00263972
+Final Average Delay (Dist2): 0.00265692
+Final Average Delay (Dist2): 0.0026644
+Final Average Delay (Dist2): 0.00267059
+Final Average Delay (Dist2): 0.00265927
+Final Average Delay (Dist2): 0.0026682
+Final Average Delay (Dist2): 0.00264145
+Final Average Delay (Dist2): 0.00266767
+Final Average Delay (Dist2): 0.00266828
+Final Average Delay (Dist2): 0.00265993
+Final Average Delay (Dist2): 0.00264873
+Final Average Delay (Dist2): 0.00331832
+Final Average Delay (Dist2): 0.00333028
+Final Average Delay (Dist2): 0.00331763
+Final Average Delay (Dist2): 0.00330731
+Final Average Delay (Dist2): 0.0032876
+Final Average Delay (Dist2): 0.00331135
+Final Average Delay (Dist2): 0.00331712
+Final Average Delay (Dist2): 0.00332315
+Final Average Delay (Dist2): 0.00333107
+Final Average Delay (Dist2): 0.00330066
+Final Average Delay (Dist2): 0.00330644
+Final Average Delay (Dist2): 0.00328968
+Final Average Delay (Dist2): 0.00334
+Final Average Delay (Dist2): 0.00332062
+Final Average Delay (Dist2): 0.00330533
+Final Average Delay (Dist2): 0.00334275
+Final Average Delay (Dist2): 0.0033
+Final Average Delay (Dist2): 0.0032775
+Final Average Delay (Dist2): 0.00333263
+Final Average Delay (Dist2): 0.00333485
+Final Average Delay (Dist2): 0.0033354
+Final Average Delay (Dist2): 0.0033406
+Final Average Delay (Dist2): 0.00331759
+Final Average Delay (Dist2): 0.00331109
+Final Average Delay (Dist2): 0.00330315
+Final Average Delay (Dist2): 0.00331111
+Final Average Delay (Dist2): 0.00331959
+Final Average Delay (Dist2): 0.00332083
+Final Average Delay (Dist2): 0.00331759
+Final Average Delay (Dist2): 0.00331649
+Final Average Delay (Dist2): 0.00329759
+Final Average Delay (Dist2): 0.00327929
+Final Average Delay (Dist2): 0.00332668
+Final Average Delay (Dist2): 0.00898188 Over packet: 16
+Final Average Delay (Dist2): 0.00903041 Over packet: 17
+Final Average Delay (Dist2): 0.0090846 Over packet: 15
+Final Average Delay (Dist2): 0.00882569 Over packet: 16
+Final Average Delay (Dist2): 0.00903041 Over packet: 17
+Final Average Delay (Dist2): 0.00903041 Over packet: 17
+Final Average Delay (Dist2): 0.00892267 Over packet: 15
+Final Average Delay (Dist2): 0.00898188 Over packet: 16
+Final Average Delay (Dist2): 0.00898188 Over packet: 16
+Final Average Delay (Dist2): 0.0087325 Over packet: 14
+Final Average Delay (Dist2): 0.00903041 Over packet: 17
+Final Average Delay (Dist2): 0.00892369 Over packet: 16
+Final Average Delay (Dist2): 0.00903041 Over packet: 17
+Final Average Delay (Dist2): 0.0090085 Over packet: 14
+Final Average Delay (Dist2): 0.00909081 Over packet: 16
+Final Average Delay (Dist2): 0.00903041 Over packet: 17
+Final Average Delay (Dist2): 0.00903041 Over packet: 17
+Final Average Delay (Dist2): 0.00903041 Over packet: 17
+Final Average Delay (Dist2): 0.00903041 Over packet: 17
+Final Average Delay (Dist2): 0.00892369 Over packet: 16
+Final Average Delay (Dist2): 0.0090335 Over packet: 16
+Final Average Delay (Dist2): 0.00881533 Over packet: 15
+Final Average Delay (Dist2): 0.00903041 Over packet: 17
+Final Average Delay (Dist2): 0.00903041 Over packet: 17
+Final Average Delay (Dist2): 0.00903041 Over packet: 17
+Final Average Delay (Dist2): 0.00917613 Over packet: 16
+Final Average Delay (Dist2): 0.00908556 Over packet: 16
+Final Average Delay (Dist2): 0.0090335 Over packet: 16
+Final Average Delay (Dist2): 0.009058 Over packet: 14
+Final Average Delay (Dist2): 0.00890444 Over packet: 16
+Final Average Delay (Dist2): 0.00888125 Over packet: 16
+Final Average Delay (Dist2): 0.00882569 Over packet: 16
+Final Average Delay (Dist2): 0.0090846 Over packet: 15
+Final Average Delay (Dist2): 0.00903041 Over packet: 17
+Final Average Delay (Dist2): 0.0090065 Over packet: 14
+Final Average Delay (Dist2): 0.00910044 Over packet: 16
+Final Average Delay (Dist2): 0.00892369 Over packet: 16
+Final Average Delay (Dist2): 0.00905581 Over packet: 16
+Final Average Delay (Dist2): 0.00903041 Over packet: 17
+Final Average Delay (Dist2): 0.00903041 Over packet: 17
+Final Average Delay (Dist2): 0.00888673 Over packet: 15
+Final Average Delay (Dist2): 0.00892369 Over packet: 16
+Final Average Delay (Dist2): 0.00903041 Over packet: 17
+Final Average Delay (Dist2): 0.00903041 Over packet: 17
+Final Average Delay (Dist2): 0.00903041 Over packet: 17
+Final Average Delay (Dist2): 0.00911027 Over packet: 15
+Final Average Delay (Dist2): 0.0078834 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00776113 Over packet: 15
+Final Average Delay (Dist2): 0.00790673 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00783347 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.0076776 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00786987 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007882 Over packet: 14
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00783347 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.0076972 Over packet: 15
+Final Average Delay (Dist2): 0.00780547 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.0078665 Over packet: 14
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00756187 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00786893 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00780547 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007941 Over packet: 14
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00780547 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00785587 Over packet: 15
+Final Average Delay (Dist2): 0.0078638 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.0078582 Over packet: 15
+Final Average Delay (Dist2): 0.0076776 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00765638 Over packet: 13
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.0078834 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00776113 Over packet: 15
+Final Average Delay (Dist2): 0.00790673 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00783347 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.0076776 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00786987 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007882 Over packet: 14
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00783347 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.0076972 Over packet: 15
+Final Average Delay (Dist2): 0.00780547 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.0078665 Over packet: 14
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00756187 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00786893 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00780547 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007941 Over packet: 14
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00780547 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00785587 Over packet: 15
+Final Average Delay (Dist2): 0.0078638 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.0078582 Over packet: 15
+Final Average Delay (Dist2): 0.0076776 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00765638 Over packet: 13
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.0078834 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00776113 Over packet: 15
+Final Average Delay (Dist2): 0.00790673 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00783347 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.0076776 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00786987 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007882 Over packet: 14
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00783347 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.0076972 Over packet: 15
+Final Average Delay (Dist2): 0.00780547 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.0078665 Over packet: 14
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00756187 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00786893 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00780547 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007941 Over packet: 14
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00780547 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00785587 Over packet: 15
+Final Average Delay (Dist2): 0.0078638 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.0078582 Over packet: 15
+Final Average Delay (Dist2): 0.0076776 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00765638 Over packet: 13
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.0078834 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00776113 Over packet: 15
+Final Average Delay (Dist2): 0.00790673 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00783347 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.0076776 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00786987 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007882 Over packet: 14
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00783347 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.0076972 Over packet: 15
+Final Average Delay (Dist2): 0.00780547 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.0078665 Over packet: 14
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00756187 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00786893 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00780547 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007941 Over packet: 14
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00780547 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00785587 Over packet: 15
+Final Average Delay (Dist2): 0.0078638 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.0078582 Over packet: 15
+Final Average Delay (Dist2): 0.0076776 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00765638 Over packet: 13
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.0078834 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00776113 Over packet: 15
+Final Average Delay (Dist2): 0.00790673 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00783347 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.0076776 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00786987 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007882 Over packet: 14
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00783347 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.0076972 Over packet: 15
+Final Average Delay (Dist2): 0.00780547 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.0078665 Over packet: 14
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00756187 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00786893 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00780547 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007941 Over packet: 14
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00780547 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00785587 Over packet: 15
+Final Average Delay (Dist2): 0.0078638 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.0078582 Over packet: 15
+Final Average Delay (Dist2): 0.0076776 Over packet: 15
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.00765638 Over packet: 13
+Final Average Delay (Dist2): 0.007833 Over packet: 16
+Final Average Delay (Dist2): 0.0102395 Over packet: 23
+Final Average Delay (Dist2): 0.0102395 Over packet: 23
+Final Average Delay (Dist2): 0.0102453 Over packet: 21
+Final Average Delay (Dist2): 0.0098924 Over packet: 20
+Final Average Delay (Dist2): 0.009518 Over packet: 21
+Final Average Delay (Dist2): 0.009518 Over packet: 21
+Final Average Delay (Dist2): 0.0101112 Over packet: 22
+Final Average Delay (Dist2): 0.0102395 Over packet: 23
+Final Average Delay (Dist2): 0.0102395 Over packet: 23
+Final Average Delay (Dist2): 0.0103479 Over packet: 22
+Final Average Delay (Dist2): 0.0103428 Over packet: 20
+Final Average Delay (Dist2): 0.0103765 Over packet: 22
+Final Average Delay (Dist2): 0.009518 Over packet: 21
+Final Average Delay (Dist2): 0.0102395 Over packet: 23
+Final Average Delay (Dist2): 0.0102395 Over packet: 23
+Final Average Delay (Dist2): 0.0103129 Over packet: 22
+Final Average Delay (Dist2): 0.0102395 Over packet: 23
+Final Average Delay (Dist2): 0.010249 Over packet: 22
+Final Average Delay (Dist2): 0.0103576 Over packet: 20
+Final Average Delay (Dist2): 0.0102387 Over packet: 21
+Final Average Delay (Dist2): 0.0102395 Over packet: 23
+Final Average Delay (Dist2): 0.0102395 Over packet: 23
+Final Average Delay (Dist2): 0.0102423 Over packet: 22
+Final Average Delay (Dist2): 0.0102395 Over packet: 23
+Final Average Delay (Dist2): 0.0102395 Over packet: 23
+Final Average Delay (Dist2): 0.010249 Over packet: 22
+Final Average Delay (Dist2): 0.010541 Over packet: 21
+Final Average Delay (Dist2): 0.00992982 Over packet: 22
+Final Average Delay (Dist2): 0.0102395 Over packet: 23
+Final Average Delay (Dist2): 0.0103479 Over packet: 22
+Final Average Delay (Dist2): 0.0104254 Over packet: 20
+Final Average Delay (Dist2): 0.010256 Over packet: 20
+Final Average Delay (Dist2): 0.00992982 Over packet: 22
+Final Average Delay (Dist2): 0.0102395 Over packet: 23
+Final Average Delay (Dist2): 0.01032 Over packet: 21
+Final Average Delay (Dist2): 0.0102395 Over packet: 23
+Final Average Delay (Dist2): 0.0102395 Over packet: 23
+Final Average Delay (Dist2): 0.0102395 Over packet: 23
+Final Average Delay (Dist2): 0.0093373 Over packet: 20
+Final Average Delay (Dist2): 0.0104917 Over packet: 21
+Final Average Delay (Dist2): 0.010345 Over packet: 21
+Final Average Delay (Dist2): 0.0102395 Over packet: 23
+Final Average Delay (Dist2): 0.0102395 Over packet: 23
+Final Average Delay (Dist2): 0.0101525 Over packet: 22
+Final Average Delay (Dist2): 0.00989514 Over packet: 22
+Final Average Delay (Dist2): 0.0105119 Over packet: 20
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.0096915 Over packet: 2
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.0096285 Over packet: 4
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.011543 Over packet: 3
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.00915775 Over packet: 4
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.00915775 Over packet: 4
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
+Final Average Delay (Dist2): 0.010115 Over packet: 5
