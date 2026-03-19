@@ -1,0 +1,9 @@
+ns-3.36.1/
+build/
+cmake-cache/
+*.o
+*.log
+*.csv
+*.pcap
+*.tr
+logs*/
