@@ -1,15 +1,15 @@
 #!/bin/bash
 
 SIM_TIME=8
-OUT_DIR="logsAnova3_changing_startTime"
+OUT_DIR="logsAnova5"
 mkdir -p "$OUT_DIR"
 
 RATES=("3Mbps" "9Mbps" "27Mbps")
 MEANS=(0.06 0.028 0.018)          # mean = 1/lambda
 PACKET_SIZES=(50 100 200)         # in bytes
 QUEUE_SIZES=(100)
-NO_OF_CARS=(50 80 100 150 200 250)
-PROBABILTY_OF_SEND=(0.01)
+NO_OF_CARS=(10 20 30 40 50)
+PROBABILTY_OF_SEND=(0.01 0.05 0.1)
 RUNS=(1)
 
 

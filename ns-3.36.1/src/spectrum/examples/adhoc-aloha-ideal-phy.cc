@@ -189,32 +189,44 @@ int main (int argc, char** argv)
   Ptr<ns3::UniformRandomVariable> yRV = CreateObject<ns3::UniformRandomVariable>();
   std::vector<Vector> placedPositions;
 
+
+  //For non linear 2D placement, We use this loop to randomly place vehicles in the area while ensuring that they are not too close to each other.
+
+  // for (uint32_t i = 0; i < nNodes; ++i) {
+  //   bool placed = false;
+  //   int attempts = 0;
+  //   while (!placed && attempts < 1000) { // Safety exit
+  //       double posX = xRV->GetValue(0, roadLength);
+  //       double posY = yRV->GetValue(0, roadWidth);
+  //       Vector newPos(posX, posY, 0.0);
+
+  //       bool tooClose = false;
+  //       for (const auto& existingPos : placedPositions) {
+  //           double dx = std::abs(newPos.x - existingPos.x);
+  //           double dy = std::abs(newPos.y - existingPos.y);        
+  //           if (dx == 0  && dy == 0) {
+  //               tooClose = true;
+  //               break;
+  //           }
+  //       }
+
+  //       if (!tooClose) {
+  //           positionAlloc->Add(newPos);
+  //           placedPositions.push_back(newPos);
+  //           placed = true;
+  //       }
+  //       attempts++;
+  //   }
+  // }
+
+  // For linear placement
   for (uint32_t i = 0; i < nNodes; ++i) {
-    bool placed = false;
-    int attempts = 0;
-    while (!placed && attempts < 1000) { // Safety exit
-        double posX = xRV->GetValue(0, roadLength);
-        double posY = yRV->GetValue(0, roadWidth);
-        Vector newPos(posX, posY, 0.0);
-
-        bool tooClose = false;
-        for (const auto& existingPos : placedPositions) {
-            double dx = std::abs(newPos.x - existingPos.x);
-            double dy = std::abs(newPos.y - existingPos.y);        
-            if (dx == 0  && dy == 0) {
-                tooClose = true;
-                break;
-            }
-        }
-
-        if (!tooClose) {
-            positionAlloc->Add(newPos);
-            placedPositions.push_back(newPos);
-            placed = true;
-        }
-        attempts++;
-    }
+    double distBetweenCars = roadLength / nNodes;
+    double posX = distBetweenCars * i + distBetweenCars / 2;
+    placedPositions.push_back(Vector(posX, roadWidth / 2, 0.0));
+    positionAlloc->Add(placedPositions.back());
   }
+  
 
   MobilityHelper mobility;
   mobility.SetPositionAllocator(positionAlloc);

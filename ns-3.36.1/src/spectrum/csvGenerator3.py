@@ -2,8 +2,8 @@ import os
 import re
 import csv
 
-DATA_DIR = "/DATA/rohit/krish/MTP/ns-allinone-3.36.1/ns-3.36.1/logsAnova3_changing_startTime"
-OUTPUT_CSV = "Delay_finalComparisionwithBD2.csv"
+DATA_DIR = "/DATA/rohit/krish/MTP/ns-allinone-3.36.1/ns-3.36.1/logsAnova5"
+OUTPUT_CSV = "Delay_finalComparisionwithBD5.csv"
 
 # -------- filename parser --------
 FILENAME_PATTERN = re.compile(
