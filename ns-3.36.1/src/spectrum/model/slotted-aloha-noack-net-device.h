@@ -120,6 +120,12 @@ public:
   bool SendorNot (void);
 
   /**
+    * This method is used to capture the slot number of future slots as well.
+    * It takes the number of repetations as an argument to capture the slot numbers for all repetations.
+  */
+  std::vector<int> GenerateReplicaSlots (int repetitions);
+
+  /**
    * Notify the MAC that the PHY has finished a previously started transmission
    *
    */

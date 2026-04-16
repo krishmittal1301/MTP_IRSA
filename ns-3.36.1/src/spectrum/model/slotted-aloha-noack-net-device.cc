@@ -446,12 +446,12 @@ SlottedAlohaNoackNetDevice::ChooseRepetations (void)
   std::vector<double> cum = {0.5, 0.78, 1};      // probs = {0.5, 0.28, 0.22};
   std::vector<int> repetations = {2,3,8};
   
-  std::cout<<"Repetations are chosen based on probabilities: "<<std::endl;
+  // std::cout<<"Repetations are chosen based on probabilities: "<<std::endl;
   
-  for(size_t i=0; i<repetations.size(); i++)
-  {    
-    std::cout<<"Repetations: "<<repetations[i]<<" with cumulative probability: "<<cum[i]<<std::endl;
-  }  
+  // for(size_t i=0; i<repetations.size(); i++)
+  // {    
+  //   std::cout<<"Repetations: "<<repetations[i]<<" with cumulative probability: "<<cum[i]<<std::endl;
+  // }  
 
   Ptr<UniformRandomVariable> uv = CreateObject<UniformRandomVariable>();
   double rnd = uv->GetValue(0.0,1.0);
@@ -476,12 +476,42 @@ SlottedAlohaNoackNetDevice::SendorNot (void)
   double rnd = uv->GetValue(0.0,1.0);
   if (rnd < m_probabilityOfSend)
   {
-    return false;
+    return true;
   }
 
-  return true;
+  return false;
 }
 
+// This method is used to capture the slot number of future slots as well.
+std::vector<int>
+SlottedAlohaNoackNetDevice::GenerateReplicaSlots(int repetitions)
+{
+    std::vector<int> slots;
+
+    uint64_t currentSlot =
+        Simulator::Now().GetMicroSeconds() /
+        m_slotDuration.GetMicroSeconds();
+
+    for (int i = 1; i <= repetitions; ++i)
+    {
+        currentSlot = currentSlot + 1;
+        bool sendInThisSlot = SendorNot(); // Decide whether to send in this slot based on probability
+        while (!sendInThisSlot)
+        {
+            currentSlot++;
+            sendInThisSlot = SendorNot();
+        }
+        slots.push_back(currentSlot);
+        
+    }
+    // std::cout << "Generated replica slots: ";
+    // for (int slot : slots)
+    // {
+    //     std::cout << slot << " ";
+    // }
+    // std::cout << std::endl;
+    return slots;
+}
 
 void
 SlottedAlohaNoackNetDevice::AddLinkChangeCallback (Callback<void> callback)
@@ -625,94 +655,116 @@ SlottedAlohaNoackNetDevice::StartTransmission ()
   // NS_ASSERT (m_currentPkt == 0);
   NS_ASSERT (m_state == IDLE);
   
-  if(!SendorNot())
+  // std::cout<<"starting tansmission at"<<Simulator::Now()<<" queue length: "<<m_queue->GetCurrentSize()<<std::endl;
+  if(m_repetationsTracker == 0 && m_queue->IsEmpty() == false)
   {
-    Time now = Simulator::Now ();
-    Time nextSlot = Seconds (std::ceil (now.GetSeconds () / m_slotDuration.GetSeconds () +
-    NanoSeconds (1).GetSeconds ()) *
-    m_slotDuration.GetSeconds ());
-    // std::cout<<(nextSlot-now).GetMicroSeconds()<<std::endl;
-    Simulator::Schedule (nextSlot - now, &SlottedAlohaNoackNetDevice::StartTransmission, this);
-  }
-  
-  else
-  {
-    
-    // std::cout<<"starting tansmission at"<<Simulator::Now()<<" queue length: "<<m_queue->GetCurrentSize()<<std::endl;
-    if(m_repetationsTracker == 0 && m_queue->IsEmpty() == false)
+    Ptr<Packet> p = m_queue->Dequeue ();
+    if(m_queue->IsEmpty())
     {
-      Ptr<Packet> p = m_queue->Dequeue ();
-      if(m_queue->IsEmpty())
-      {
-        m_repetationsTracker = -1;
-      }
+      m_repetationsTracker = -1;
     }
-    
-    // std::cout<<"starting tansmission at2"<<Simulator::Now()<<" queue length: "<<m_queue->GetCurrentSize()<<std::endl;
-    if (m_queue->IsEmpty () == false)
-    {
-        if(m_repetationsTracker == 0 || m_repetationsTracker == -1)   // First time sending the packet
-        {
-          repetationsTag rpt;
-          m_slotsTracker = {};
-          m_queue->Peek ()->PeekPacketTag (rpt);
-          m_repetationsTracker = rpt.GetData().first;
-        }
-              
-        Ptr<Packet> p = m_queue->Peek ()->Copy();
-        repetationsTag rpt;
-        p->RemovePacketTag (rpt);
-        m_slotsTracker.push_back(Simulator::Now().GetMicroSeconds()/m_slotDuration.GetMicroSeconds());
-        p->AddPacketTag(repetationsTag(m_repetationsTracker, m_slotsTracker));
-        m_repetationsTracker--;
-
-        TimestampTag ts;
-        Time macdelay;
-        DistributionTag distTag;
-        // uint8_t distType;
-  
-        if (p->PeekPacketTag (ts))
-          {
-            macdelay = Simulator::Now () - ts.GetTimestamp ();
-            // std::cout << "End-to-end delay = " << delay.GetSeconds() << " s" << std::endl;
-          }
-  
-        // if (p->PeekPacketTag (distTag))
-        //   {
-        //     distType = distTag.GetDistribution ();
-        //     // std::cout << "Distribution Type = " << distType << std::endl;
-        //   }
-        m_macTotalDelay += macdelay.GetSeconds ();
-        m_macDelayCount++;
-        // m_macDelayLogFile << "Time: " << Simulator::Now () << "\t"
-        //               << "MacDelay: " << macdelay.GetSeconds () << "\t"
-        //               << "queue-length: " << m_queue->GetCurrentSize () << "\t"
-        //               << "DistType: "<<static_cast<DistributionTag::DistType> (distType)<<std::endl;
-        NS_ASSERT (p);
-        m_currentPkt = p;
-        // std::cout<<"transmitting packet at slot: "<<Simulator::Now().GetMicroSeconds()/m_slotDuration.GetMicroSeconds()<<std::endl;
-        NS_LOG_LOGIC ("scheduling transmission now");
-        // send_packets++;
-        // std::cout<<"Send packet: "<<send_packets<<std::endl;
-        if (m_phyMacTxStartCallback (m_currentPkt))
-          {
-            NS_LOG_WARN ("PHY refused to start TX");
-          }
-        else
-          {
-            m_state = TX;
-          }
-        if (m_queue->IsEmpty () == false)
-          {
-            Time now = Simulator::Now ();
-            Time nextSlot = Seconds (std::ceil (now.GetSeconds () / m_slotDuration.GetSeconds () +
-                                                NanoSeconds (1).GetSeconds ()) *
-                                     m_slotDuration.GetSeconds ());
-            Simulator::Schedule (nextSlot - now, &SlottedAlohaNoackNetDevice::StartTransmission, this);
-            // std::cout<<"scheduled for"<<nextSlot<<std::endl;
-          }
-      }
   }
+
+  // std::cout<<"starting tansmission at2"<<Simulator::Now()<<" queue length: "<<m_queue->GetCurrentSize()<<std::endl;
+  if (m_queue->IsEmpty () == false)
+  {
+      if(m_repetationsTracker == 0 || m_repetationsTracker == -1)   // First time sending the packet
+      {
+        repetationsTag rpt;
+        m_queue->Peek ()->PeekPacketTag (rpt);
+        m_repetationsTracker = rpt.GetData().first;
+        m_slotsTracker = GenerateReplicaSlots(m_repetationsTracker);
+      }
+
+      uint64_t currentSlot = Simulator::Now().GetMicroSeconds() / m_slotDuration.GetMicroSeconds();
+      int index = m_slotsTracker.size() - m_repetationsTracker;
+      
+      if (m_repetationsTracker <= 0 || m_slotsTracker.empty())
+      {
+          return;
+      }
+      if (index < 0 || index >= (int)m_slotsTracker.size())
+      {
+          return;
+      }
+
+      uint64_t scheduledSlot = m_slotsTracker[index];
+
+      // std::cout<<"Current Slot: "<<currentSlot<<" Scheduled Slot: "<<scheduledSlot<<" Repetations left: "<<m_repetationsTracker<<std::endl;
+      
+      if (currentSlot != scheduledSlot)
+      {
+          Time now = Simulator::Now();
+
+          Time nextSlot = Seconds (
+              std::ceil(
+                  now.GetSeconds() /
+                  m_slotDuration.GetSeconds()
+                  + NanoSeconds(1).GetSeconds()
+              ) *
+              m_slotDuration.GetSeconds());
+
+          Simulator::Schedule(
+              nextSlot - now,
+              &SlottedAlohaNoackNetDevice::StartTransmission,
+              this);
+
+          return;
+      }
+            
+      Ptr<Packet> p = m_queue->Peek ()->Copy();
+      repetationsTag rpt;
+      p->RemovePacketTag (rpt);
+      // m_slotsTracker.push_back(Simulator::Now().GetMicroSeconds()/m_slotDuration.GetMicroSeconds());
+      p->AddPacketTag(repetationsTag(m_repetationsTracker, m_slotsTracker));
+      m_repetationsTracker--;
+
+      TimestampTag ts;
+      Time macdelay;
+      DistributionTag distTag;
+      // uint8_t distType;
+
+      if (p->PeekPacketTag (ts))
+        {
+          macdelay = Simulator::Now () - ts.GetTimestamp ();
+          // std::cout << "End-to-end delay = " << delay.GetSeconds() << " s" << std::endl;
+        }
+
+      // if (p->PeekPacketTag (distTag))
+      //   {
+      //     distType = distTag.GetDistribution ();
+      //     // std::cout << "Distribution Type = " << distType << std::endl;
+      //   }
+      m_macTotalDelay += macdelay.GetSeconds ();
+      m_macDelayCount++;
+      // m_macDelayLogFile << "Time: " << Simulator::Now () << "\t"
+      //               << "MacDelay: " << macdelay.GetSeconds () << "\t"
+      //               << "queue-length: " << m_queue->GetCurrentSize () << "\t"
+      //               << "DistType: "<<static_cast<DistributionTag::DistType> (distType)<<std::endl;
+      NS_ASSERT (p);
+      m_currentPkt = p;
+      // std::cout<<"transmitting packet at slot: "<<Simulator::Now().GetMicroSeconds()/m_slotDuration.GetMicroSeconds()<<std::endl;
+      NS_LOG_LOGIC ("scheduling transmission now");
+      // send_packets++;
+      // std::cout<<"Send packet: "<<send_packets<<std::endl;
+      if (m_phyMacTxStartCallback (m_currentPkt))
+        {
+          NS_LOG_WARN ("PHY refused to start TX");
+        }
+      else
+        {
+          m_state = TX;
+        }
+      if (m_queue->IsEmpty () == false)
+        {
+          Time now = Simulator::Now ();
+          Time nextSlot = Seconds (std::ceil (now.GetSeconds () / m_slotDuration.GetSeconds () +
+                                              NanoSeconds (1).GetSeconds ()) *
+                                    m_slotDuration.GetSeconds ());
+          Simulator::Schedule (nextSlot - now, &SlottedAlohaNoackNetDevice::StartTransmission, this);
+          // std::cout<<"scheduled for"<<nextSlot<<std::endl;
+        }
+    }
 
 }
 

@@ -258,6 +258,12 @@ private:
 
   std::map<uint64_t,std::vector<Ptr<Packet>>> m_slotPacketMap;
 
+  /**
+  It captures the packets by their source and timestamp.
+  So that if a packet is decoded successfully then we can discard the copy of that packet in future slots.
+  */
+  std::set<std::pair<Mac48Address, Time>> m_decodedPackets;
+
   // Map such that if a packet arrives successfully then we can discard the copy of that packet in future
   std::map<ns3::Mac48Address,std::map<Time,uint64_t>> m_packetTracker;
 

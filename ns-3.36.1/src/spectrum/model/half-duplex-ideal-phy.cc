@@ -57,7 +57,7 @@ void
 HalfDuplexIdealPhy::SetSlotDuration (Time slot)
 {
   m_slotDuration = slot;
-  std::cout<<"Slot duration set to: "<<m_slotDuration.GetMicroSeconds()<<" microseconds"<<std::endl;
+  // std::cout<<"Slot duration set to: "<<m_slotDuration.GetMicroSeconds()<<" microseconds"<<std::endl;
 }
 
 
@@ -313,6 +313,8 @@ HalfDuplexIdealPhy::RecursiveInterferenceCancellation(Ptr<Packet> p)
     return;
   }
 
+  m_decodedPackets.insert({src, tt});
+  
   bool send_mac_layer = true;
   if(m_packetTracker.find(src) != m_packetTracker.end()){
     if(m_packetTracker[src].find(tt) != m_packetTracker[src].end()){
@@ -569,7 +571,48 @@ HalfDuplexIdealPhy::StartRx (Ptr<SpectrumSignalParameters> spectrumParams)
           Ptr<Packet> p = rxParams->data;
           received_packets++;
           // std::cout<<"Received packets so far: "<<received_packets<<std::endl;
-          // std::cout<<"start receiving packet at slot: "<<Simulator::Now().GetMilliSeconds()/4<<std::endl;
+          // uint64_t currentSlot =
+          // Simulator::Now().GetMicroSeconds() /
+          // m_slotDuration.GetMicroSeconds();
+
+          // std::cout
+          //     << "Start receiving packet at slot: "
+          //     << currentSlot
+          //     << std::endl;
+
+          // std::cout
+          //     << "Packet details: "
+          //     << *p
+          //     << std::endl;
+
+          repetationsTag rpt;
+
+          if (p->PeekPacketTag(rpt))
+          {
+              auto data = rpt.GetData();
+
+              // int remainingReps = data.first;
+              // std::vector<int> replicaSlots = data.second;
+
+              // std::cout
+              //     << "Remaining reps: "
+              //     << remainingReps
+              //     << std::endl;
+
+              // std::cout
+              //     << "Replica slots: ";
+
+              // for (auto slot : replicaSlots)
+              // {
+              //     std::cout
+              //         << slot
+              //         << " ";
+              // }
+
+              // std::cout
+              //     << std::endl;
+          }
+
           
           // p->PeekPacketTag();
           if (p == 0)
@@ -602,6 +645,16 @@ HalfDuplexIdealPhy::StartRx (Ptr<SpectrumSignalParameters> spectrumParams)
           else if (distType == 3)
           {
             m_phyUniqueReceptionsDist2.insert (std::make_pair (src, tt));
+          }
+
+          if (m_decodedPackets.count({src, tt}) > 0)
+          {
+              // std::cout
+              //     << "Dropping future replica at slot: "
+              //     << currentSlot
+              //     << std::endl;
+
+              return;   // stop processing this packet completely
           }
 
           if(m_slotPacketMap.find(Simulator::Now().GetMicroSeconds()/m_slotDuration.GetMicroSeconds()) != m_slotPacketMap.end())
