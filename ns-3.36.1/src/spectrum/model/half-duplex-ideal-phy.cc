@@ -392,6 +392,19 @@ HalfDuplexIdealPhy::RecursiveInterferenceCancellation(Ptr<Packet> p)
       //if vector is empty then removing the key from map
       if(m_slotPacketMap[slot].size() == 1)
       {
+        // std::cout<<"Only one packet left at slot: "<<slot<<", calling RIC Caller"<<std::endl;
+        // if (currentSlot - slot > 400)
+        // {
+        //   std::cout<<"Current slot: "<<currentSlot<<" Previous slot: "<<slot<<std::endl;
+        //   Ptr<Packet> temp_pkt = m_slotPacketMap[slot][0];
+        //   TimestampTag ts;
+
+        //   if(temp_pkt->PeekPacketTag(ts))
+        //   {
+        //     std::cout<<"Packet timestamp: "<<Simulator::Now().GetSeconds() - ts.GetTimestamp().GetSeconds()<<" seconds"<<std::endl;
+        //     std::cout<<"Slot Duration: "<<m_slotDuration.GetSeconds()<<" seconds"<<std::endl;
+        //   }
+        // }
         RecursiveInterferenceCancellation( m_slotPacketMap[slot][0]);
       }
     }
