@@ -89,6 +89,14 @@ public:
     uint32_t totalReceivedDist2;
   };
 
+  struct RecentSlotStats
+  {
+    uint32_t idleSlots;
+    uint32_t successSlots;
+    uint32_t collisionSlots;
+    uint32_t observedSlots;
+  };
+
   HalfDuplexIdealPhy ();
   virtual ~HalfDuplexIdealPhy ();
 
@@ -221,6 +229,9 @@ public:
   UncancelledPacketStats
   GetUncancelledPacketCount () const;
 
+  RecentSlotStats
+  GetRecentSlotStats (uint32_t windowSlots) const;
+
 private:
   virtual void DoDispose (void);
 
@@ -244,6 +255,7 @@ private:
 
   void RecursiveInterferenceCancellation (Ptr<Packet> p);
   void RICCaller();
+  void RecordSlotOutcome (uint64_t slot);
 
   EventId m_endRxEventId; //!< End Rx event
 
@@ -257,6 +269,7 @@ private:
   // And in further slots copy come we can take out those packets
 
   std::map<uint64_t,std::vector<Ptr<Packet>>> m_slotPacketMap;
+  std::map<uint64_t,uint32_t> m_slotReceptionCount;
 
   /**
   It captures the packets by their source and timestamp.

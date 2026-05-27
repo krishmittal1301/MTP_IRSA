@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SIM_TIME=8
-OUT_DIR="logsAnova6.1"
+OUT_DIR="logsAnovaTemp"
 mkdir -p "$OUT_DIR"
 
 RATES=("3Mbps" "9Mbps" "27Mbps")
@@ -56,7 +56,7 @@ run_one() {
 export -f run_one
 export SIM_TIME OUT_DIR
 
-./parallel -j 20 run_one ::: \
+./parallel -j 1 run_one ::: \
   "${RATES[@]}" ::: \
   "${MEANS[@]}" ::: \
   "${PACKET_SIZES[@]}" ::: \

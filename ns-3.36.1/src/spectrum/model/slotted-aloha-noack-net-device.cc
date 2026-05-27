@@ -140,6 +140,76 @@ SlottedAlohaNoackNetDevice::GetTypeId (void)
                         MakeDoubleAccessor (&SlottedAlohaNoackNetDevice::m_probabilityOfSend),
                         MakeDoubleChecker<double> (0.0, 1.0)
           )
+          .AddAttribute (
+                        "EnableAdaptiveIrsa",
+                        "Enable adaptive sending probability and repetitions based on recent slot outcomes",
+                        BooleanValue (true),
+                        MakeBooleanAccessor (&SlottedAlohaNoackNetDevice::m_enableAdaptiveIrsa),
+                        MakeBooleanChecker ()
+          )
+          .AddAttribute (
+                        "AdaptiveWindowSlots",
+                        "Number of recent slots used by the adaptive IRSA controller",
+                        UintegerValue (20),
+                        MakeUintegerAccessor (&SlottedAlohaNoackNetDevice::m_adaptiveWindowSlots),
+                        MakeUintegerChecker<uint32_t> (1)
+          )
+          .AddAttribute (
+                        "AdaptiveCollisionThreshold",
+                        "Collisions in the recent window at or above this value reduce send probability",
+                        UintegerValue (6),
+                        MakeUintegerAccessor (&SlottedAlohaNoackNetDevice::m_adaptiveCollisionThreshold),
+                        MakeUintegerChecker<uint32_t> ()
+          )
+          .AddAttribute (
+                        "AdaptiveIdleThreshold",
+                        "Idle slots in the recent window at or above this value increase send probability",
+                        UintegerValue (8),
+                        MakeUintegerAccessor (&SlottedAlohaNoackNetDevice::m_adaptiveIdleThreshold),
+                        MakeUintegerChecker<uint32_t> ()
+          )
+          .AddAttribute (
+                        "AdaptiveQueueHighThreshold",
+                        "Queue length above which probability is not reduced below the queue-pressure floor",
+                        UintegerValue (25),
+                        MakeUintegerAccessor (&SlottedAlohaNoackNetDevice::m_adaptiveQueueHighThreshold),
+                        MakeUintegerChecker<uint32_t> ()
+          )
+          .AddAttribute (
+                        "AdaptiveIncreaseStep",
+                        "Amount added to send probability when the channel is underutilized",
+                        DoubleValue (0.02),
+                        MakeDoubleAccessor (&SlottedAlohaNoackNetDevice::m_adaptiveIncreaseStep),
+                        MakeDoubleChecker<double> (0.0, 1.0)
+          )
+          .AddAttribute (
+                        "AdaptiveDecreaseStep",
+                        "Amount subtracted from send probability when the channel is congested",
+                        DoubleValue (0.04),
+                        MakeDoubleAccessor (&SlottedAlohaNoackNetDevice::m_adaptiveDecreaseStep),
+                        MakeDoubleChecker<double> (0.0, 1.0)
+          )
+          .AddAttribute (
+                        "AdaptiveMinProbability",
+                        "Lowest send probability allowed by adaptive IRSA",
+                        DoubleValue (0.2),
+                        MakeDoubleAccessor (&SlottedAlohaNoackNetDevice::m_adaptiveMinProbability),
+                        MakeDoubleChecker<double> (0.0, 1.0)
+          )
+          .AddAttribute (
+                        "AdaptiveMaxProbability",
+                        "Highest send probability allowed by adaptive IRSA",
+                        DoubleValue (0.8),
+                        MakeDoubleAccessor (&SlottedAlohaNoackNetDevice::m_adaptiveMaxProbability),
+                        MakeDoubleChecker<double> (0.0, 1.0)
+          )
+          .AddAttribute (
+                        "AdaptiveQueuePressureMinProbability",
+                        "Minimum send probability when queue backlog is high",
+                        DoubleValue (0.5),
+                        MakeDoubleAccessor (&SlottedAlohaNoackNetDevice::m_adaptiveQueuePressureMinProbability),
+                        MakeDoubleChecker<double> (0.0, 1.0)
+          )
 
           .AddTraceSource ("MacTx",
                            "Trace source indicating a packet has arrived "
@@ -184,6 +254,7 @@ SlottedAlohaNoackNetDevice::SlottedAlohaNoackNetDevice ()
   m_pktReceived = 0;
   m_successReceivedDist1 = 0;
   m_successReceivedDist2 = 0;
+  m_initialProbabilityOfSend = m_probabilityOfSend;
   m_repetationsTracker = -1;
   m_slotsTracker = {};
   // m_probabilityOfSend = 0.3;
@@ -210,6 +281,7 @@ SlottedAlohaNoackNetDevice::DoInitialize (void)
   // std::cout<<"[SlottedAlohaNoackNetDevice] Slot Duration set to: "<<m_slotDuration.GetMicroSeconds()<<" microseconds"<<std::endl;
   Ptr<HalfDuplexIdealPhy> phy = DynamicCast<HalfDuplexIdealPhy> (m_phy);
   m_probabilityOfSend = std::min(std::max(m_probabilityOfSend, 0.0), 1.0); // Clamp between 0 and 1
+  m_initialProbabilityOfSend = m_probabilityOfSend;
   // std::cout<<"[SlottedAlohaNoackNetDevice] Probability of Send set to: "<<m_probabilityOfSend<<std::endl;
   if (phy)
     {
@@ -443,6 +515,11 @@ SlottedAlohaNoackNetDevice::IsLinkUp (void) const
 int 
 SlottedAlohaNoackNetDevice::ChooseRepetations (void)
 {
+  // if (m_enableAdaptiveIrsa)
+  //   {
+  //     return m_adaptiveRepetitions;
+  //   }
+
   std::vector<double> cum = {0.5, 0.78, 1};      // probs = {0.5, 0.28, 0.22};
   std::vector<int> repetations = {2,3,8};
   
@@ -482,10 +559,96 @@ SlottedAlohaNoackNetDevice::SendorNot (void)
   return false;
 }
 
+void
+SlottedAlohaNoackNetDevice::UpdateAdaptiveAccessParameters (void)
+{
+  // std::cout<<"Updating adaptive access parameters at time: "<<Simulator::Now ().GetSeconds ()<<" seconds"<<std::endl;
+  if (!m_enableAdaptiveIrsa || m_slotDuration.IsZero ())
+    {
+      return;
+    }
+
+  uint64_t currentSlot = Simulator::Now ().GetMicroSeconds () / m_slotDuration.GetMicroSeconds ();
+  if (currentSlot == m_lastAdaptiveSlot)
+    {
+      return;
+    }
+  m_lastAdaptiveSlot = currentSlot;
+
+  Ptr<HalfDuplexIdealPhy> phy = DynamicCast<HalfDuplexIdealPhy> (m_phy);
+  if (!phy)
+    {
+      return;
+    }
+
+  HalfDuplexIdealPhy::RecentSlotStats stats = phy->GetRecentSlotStats (m_adaptiveWindowSlots);
+  uint32_t queuePackets = m_queue ? m_queue->GetNPackets () : 0;
+  bool queuePressure = queuePackets >= m_adaptiveQueueHighThreshold;
+
+  double minProbability = queuePressure
+                              ? std::max (m_adaptiveMinProbability,
+                                          m_adaptiveQueuePressureMinProbability)
+                              : m_adaptiveMinProbability;
+  minProbability = std::min (minProbability, m_adaptiveMaxProbability);
+
+
+  double collisionRate =
+    double(stats.collisionSlots) /
+    m_adaptiveWindowSlots;
+
+  double idleRate =
+      double(stats.idleSlots) /
+      m_adaptiveWindowSlots;
+
+  if (collisionRate > 0.25)
+  {
+      double step =
+          m_adaptiveDecreaseStep *
+          (collisionRate);
+
+      m_probabilityOfSend =
+          std::max(minProbability,
+                  m_probabilityOfSend - step);
+  }
+  else if (idleRate > 0.40 &&
+          queuePackets > 0)
+  {
+      double step =
+          m_adaptiveIncreaseStep *
+          idleRate;
+
+      m_probabilityOfSend =
+          std::min(m_adaptiveMaxProbability,
+                  m_probabilityOfSend + step);
+  }
+  else
+  {
+      m_probabilityOfSend = std::min(m_probabilityOfSend, m_initialProbabilityOfSend);
+  }
+
+  // if (stats.collisionSlots >= m_adaptiveCollisionThreshold)
+  //   {
+  //     m_adaptiveRepetitions = queuePressure ? 2 : 3;
+  //   }
+  // else if (stats.idleSlots >= m_adaptiveIdleThreshold)
+  //   {
+  //     m_adaptiveRepetitions = queuePressure ? 3 : 2;
+  //   }
+  // else if (m_probabilityOfSend <= m_initialProbabilityOfSend)
+  //   {
+  //     m_adaptiveRepetitions = queuePressure ? 2 : 3;
+  //   }
+  // else
+  //   {
+  //     m_adaptiveRepetitions = 2;
+  //   }
+}
+
 // This method is used to capture the slot number of future slots as well.
 std::vector<int>
 SlottedAlohaNoackNetDevice::GenerateReplicaSlots(int repetitions)
 {
+    UpdateAdaptiveAccessParameters ();
     std::vector<int> slots;
 
     uint64_t currentSlot =
@@ -591,6 +754,7 @@ SlottedAlohaNoackNetDevice::SendFrom (Ptr<Packet> packet, const Address &src, co
 
   NS_LOG_LOGIC ("deferring TX, enqueueing new packet");
   
+  UpdateAdaptiveAccessParameters ();
   int repetations = ChooseRepetations();
   // std::cout<<"Chose repetations: "<<repetations<<std::endl
   repetationsTag repTag (repetations, std::vector<int>{});
@@ -656,6 +820,7 @@ SlottedAlohaNoackNetDevice::StartTransmission ()
   NS_ASSERT (m_state == IDLE);
   
   // std::cout<<"starting tansmission at"<<Simulator::Now()<<" queue length: "<<m_queue->GetCurrentSize()<<std::endl;
+  UpdateAdaptiveAccessParameters ();
   if(m_repetationsTracker == 0 && m_queue->IsEmpty() == false)
   {
     Ptr<Packet> p = m_queue->Dequeue ();

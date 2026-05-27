@@ -355,6 +355,7 @@ HalfDuplexIdealPhy::RecursiveInterferenceCancellation(Ptr<Packet> p)
 
   uint64_t currentSlot = Simulator::Now().GetMicroSeconds()/m_slotDuration.GetMicroSeconds();
   m_slotPacketMap.erase(currentSlot);
+  m_slotReceptionCount[currentSlot] = 1;
 
   for(auto slot: previousslots)
   {
@@ -389,6 +390,7 @@ HalfDuplexIdealPhy::RecursiveInterferenceCancellation(Ptr<Packet> p)
         }
       }
       m_slotPacketMap[slot] = temp;
+      m_slotReceptionCount[slot] = temp.size();
       //if vector is empty then removing the key from map
       if(m_slotPacketMap[slot].size() == 1)
       {
@@ -415,11 +417,39 @@ HalfDuplexIdealPhy::RecursiveInterferenceCancellation(Ptr<Packet> p)
 void
 HalfDuplexIdealPhy::RICCaller()
 {
-  int currSlot = Simulator::Now().GetMicroSeconds()/m_slotDuration.GetMicroSeconds();
+  uint64_t currSlot = Simulator::Now().GetMicroSeconds()/m_slotDuration.GetMicroSeconds();
+  if (currSlot > 0)
+    {
+      RecordSlotOutcome(currSlot - 1);
+    }
   // std::cout<<"RIC Caller at slot: "<<currSlot<<std::endl;
-  if(m_slotPacketMap.find(currSlot-1) != m_slotPacketMap.end() && m_slotPacketMap[currSlot-1].size() == 1){
+  if(currSlot > 0 && m_slotPacketMap.find(currSlot-1) != m_slotPacketMap.end() && m_slotPacketMap[currSlot-1].size() == 1){
     RecursiveInterferenceCancellation(m_slotPacketMap[currSlot-1][0]);
   }
+}
+
+void
+HalfDuplexIdealPhy::RecordSlotOutcome(uint64_t slot)
+{
+  if (m_slotReceptionCount.find(slot) != m_slotReceptionCount.end())
+    {
+      return;
+    }
+
+  auto it = m_slotPacketMap.find(slot);
+  if (it == m_slotPacketMap.end())
+    {
+      m_slotReceptionCount[slot] = 0;
+    }
+  else
+    {
+      m_slotReceptionCount[slot] = it->second.size();
+    }
+
+  while (m_slotReceptionCount.size() > 10000)
+    {
+      m_slotReceptionCount.erase(m_slotReceptionCount.begin());
+    }
 }
 
 
@@ -804,5 +834,54 @@ std::set<std::string> uniqueUnrecovered;
     stats.totalReceivedDist2 = m_phyUniqueReceptionsDist2.size ();
     return stats;
   }
+
+HalfDuplexIdealPhy::RecentSlotStats
+HalfDuplexIdealPhy::GetRecentSlotStats (uint32_t windowSlots) const
+{
+  RecentSlotStats stats = {0, 0, 0, 0};
+
+  if (windowSlots == 0 || m_slotDuration.IsZero ())
+    {
+      return stats;
+    }
+
+  uint64_t currentSlot = Simulator::Now ().GetMicroSeconds () / m_slotDuration.GetMicroSeconds ();
+  uint64_t firstSlot = (currentSlot > windowSlots) ? currentSlot - windowSlots : 0;
+
+  for (uint64_t slot = firstSlot; slot < currentSlot; ++slot)
+    {
+      auto it = m_slotReceptionCount.find (slot);
+      uint32_t receptions = 0;
+      if (it != m_slotReceptionCount.end ())
+        {
+          receptions = it->second;
+        }
+      else
+        {
+          auto pending = m_slotPacketMap.find (slot);
+          if (pending != m_slotPacketMap.end ())
+            {
+              receptions = pending->second.size ();
+            }
+        }
+
+      if (receptions == 0)
+        {
+          stats.idleSlots++;
+        }
+      else if (receptions == 1)
+        {
+          stats.successSlots++;
+        }
+      else
+        {
+          stats.collisionSlots++;
+        }
+
+      stats.observedSlots++;
+    }
+
+  return stats;
+}
 
 } // namespace ns3
