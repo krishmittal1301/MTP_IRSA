@@ -119,6 +119,8 @@ public:
 
   bool SendorNot (void);
 
+  void UpdateAdaptiveAccessParameters (void);
+
   /**
     * This method is used to capture the slot number of future slots as well.
     * It takes the number of repetations as an argument to capture the slot numbers for all repetations.
@@ -233,6 +235,19 @@ public:
   // double m_totalDelay = 0.0;
   // uint64_t m_delayCount = 0;
   double m_probabilityOfSend = 0.3;
+  double m_initialProbabilityOfSend = 0.3;
+  bool m_enableAdaptiveIrsa = false;
+  uint32_t m_adaptiveWindowSlots = 10;
+  uint32_t m_adaptiveCollisionThreshold = 3;
+  uint32_t m_adaptiveIdleThreshold = 5;
+  uint32_t m_adaptiveQueueHighThreshold = 10;
+  double m_adaptiveIncreaseStep = 0.02;
+  double m_adaptiveDecreaseStep = 0.02;
+  double m_adaptiveMinProbability = 0.02;
+  double m_adaptiveMaxProbability = 0.8;
+  double m_adaptiveQueuePressureMinProbability = 0.2;
+  uint64_t m_lastAdaptiveSlot = 0;
+  int m_adaptiveRepetitions = 2;
   double m_macTotalDelay = 0.0;
   uint64_t m_macDelayCount = 0;
 

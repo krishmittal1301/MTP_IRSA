@@ -2,8 +2,8 @@ import os
 import re
 import csv
 
-DATA_DIR = "/DATA/rohit/krish/MTP/ns-allinone-3.36.1/ns-3.36.1/logsAnova6.1"
-OUTPUT_CSV = "loss_finalComparisonwithBD6_1.csv"
+DATA_DIR = "/DATA/rohit/krish/MTP/ns-allinone-3.36.1/ns-3.36.1/logsAnovaTemp"
+OUTPUT_CSV = "loss_finalComparisonwithBDTemp.csv"
 
 FILENAME_PATTERN = re.compile(
     r"loss_rate(?P<rate>\w+)_mean(?P<mean>\d+)_ncars(?P<ncars>\d+)_pkt(?P<pkt>\d+)_q(?P<queue>\d+)_prob(?P<prob>\d+)_run(?P<run>\d+)\.txt"
